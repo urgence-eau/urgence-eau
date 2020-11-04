@@ -74,6 +74,11 @@ input[type="submit"]{
     margin-top: 20px;
 }
 
+input[type="text"]{
+    font-family: 'Cabin', sans-serif;
+    color: #262626;
+}
+
 .header-element{
     display: flex;
     flex-direction: column;
@@ -262,6 +267,10 @@ i{
     font-weight: 600;
 }
 
+.formGroup{
+    margin-top: 15px;
+}
+
 .info-container span{
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
@@ -275,15 +284,100 @@ i{
 .modal-content h3{
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 10px;
+    margin-top: 20px;
     font-weight: bold;
+    font-size: 20px;
 }
 
-.modal-content label{
+#geoInfo{
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+#btn-geo{
+    margin-top: 10px;
+    width: 33%;
+}
+
+.modal-content form{
+    width: 75%;
+}
+.centered{
+    align-items: center;
+}
+.squareRow{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.groupInput{
+    display: flex;
+    flex-direction: column;
+}
+
+.groupInput input{
+    min-width: 250px;
+    border-radius: 10px;
+    height: 35px;
+    border: 1px solid #262626;
+}
+select, textarea{
+    border-radius: 3px;
+    border: 1px solid #262626;
+    font-family: 'Cabin', sans-serif;
+    color: #262626;
+    font-size: 16px;
+}
+
+select{
+    height: 40px;
+}
+
+.controlButton{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+button[type="submit"]{
+    width: 33%;
+}
+
+.title-form{
     font-family: 'Cabin', sans-serif;
     font-weight: bold;
+    font-size: 18px;
+}
+.groupRad{
+    display: flex;
+    align-items: center;
 }
 
+.groupRad label{
+    margin-bottom: 0 !important;
+    margin-left: 10px;
+}
+.marqueur{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.trait{
+    border: 1px solid #EAEBED;
+    background-color: #EAEBED;
+    width: 110px;
+}
+
+#indic{
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    color: #999999;
+    max-width: 75%;
+    margin-top: 5px;
+}
 /* MAP */
 .leaflet-pane .leaflet-shadow-pane {
     display: none;

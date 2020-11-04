@@ -19,7 +19,7 @@ include_once "header.php" ?>
                 <form action="actions/login.php" method="post">
                     <div class="formGroup">
                         <label for="email">Email</label>
-                            <input type="text" name="email">
+                        <input type="text" name="email">
                     </div>
                     <div class="formGroup">
                         <label for="password">Password</label>
@@ -39,6 +39,10 @@ include_once "header.php" ?>
                     <div class="formGroup">
                         <label for="nom">Nom</label>
                         <input type="text" name="nom">
+                    </div>
+                    <div class="formGroup">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" name="prenom">
                     </div>
                     <div class="formGroup">
                         <label for="tel">Téléphone</label>

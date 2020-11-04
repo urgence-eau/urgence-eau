@@ -1,9 +1,12 @@
 <?php
+session_start();
 require_once './Config.php';
 include_once "header.php";
 
 $departements = Config::getAllDepartement(1);
 $rows = Config::getAllIncident();
+
+$currentUser = Config::getUser($_SESSION["id"]);
 ?>
 <div class="all-container">
     <div class="container-map">
@@ -43,34 +46,42 @@ $rows = Config::getAllIncident();
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <h3>Formulaire de signalement de fuite</h3>
+                    <div class="marqueur"><div class="trait"></div></div>
                     <form action="./actions/addPointer.php" method="post">
                         <div class="formGroup">
                             <div class="title-form">Avez-vous vu un marquage au sol à proximité de la fuite ? *</div>
-                            <input type="radio" name="marquageYes">
-                            <label for="marqueYes">Oui</label>
-                            <input type="radio" name="marquageNon">
-                            <label for="marqueNon">Non</label>
-                            <span>SI OUI merci de cocher cette case et de noter dans le commentaire l'annotation sur le sol</span>
+                            <div class="groupRad">
+                                <input type="radio" name="marquage" value="1">
+                                <label for="marqueYes">Oui</label>
+                            </div>
+                            <div class="groupRad">
+                                <input type="radio" name="marquage" value="0">
+                                <label for="marqueNon">Non</label>
+                            </div>
+                            <span id="indic">SI OUI merci de cocher cette case et de noter dans le commentaire l'annotation sur le sol</span>
                         </div>
                         <div class="formGroup">
-                            <label for="importance" class="title-form">Importance de la fuite :</label>
+                            <label for="importance" class="title-form">Importance de la fuite : *</label>
                             <select name="importance">
                                 <option value="1">Faible</option>
                                 <option value="2">Moyen</option>
                                 <option value="3">Fort</option>
                             </select>
-                            <label for="commentaire">Commentaire</label>
-                            <textarea name="commentaire" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="formGroup">
+                            <label for="commentaire" class="title-form">Commentaire</label>
+                            <textarea name="commentaire" cols="30" rows="4"></textarea>
                         </div>
                         <h3>Lieu de la fuite</h3>
-                        <div class="formGroup">
-                            <span>Si vous êtes près de la fuite, géolocalisez-vous en cliquant sur ce button *</span>
+                        <div class="marqueur"><div class="trait"></div></div>
+                        <div class="formGroup centered">
+                            <span id="geoInfo">Si vous êtes près de la fuite, géolocalisez-vous en cliquant sur ce button *</span>
                             <input id="latitude" type="hidden" name="latitude" readonly>
                             <input id="longitude" type="hidden" name="longitude" readonly>
                             <button type="button" id="btn-geo">Je me géolocalise</button>
                         </div>
                         <div class="formGroup">
-                            <label for="departement">Département</label>
+                            <label for="departement" class="title-form">Département</label>
                             <select name="departement">
                                 <?php foreach ($departements as $departement){ ?>
                                         <option value="<?php echo $departement["id"]?>">
@@ -80,17 +91,32 @@ $rows = Config::getAllIncident();
                             </select>
                         </div>
                         <h3>Comment vous joindre ?</h3>
+                        <div class="marqueur"><div class="trait"></div></div>
                         <div class="formGroup">
-                            <label for="prenom">Prénom</label>
-                            <input type="text" name="prenom">
-                            <label for="nom">Nom</label>
-                            <input type="text" name="nom">
-                            <label for="email">Email</label>
-                            <input type="text" name="email">
-                            <label for="telephone">Téléphone</label>
-                            <input type="text" name="telephone">
+                            <div class="squareRow">
+                                <div class="groupInput">
+                                    <label class="title-form" for="prenom">Prénom *</label>
+                                    <input type="text" name="prenom" value="<?php echo $currentUser["prenom"] ?>">
+                                </div>
+                                <div class="groupInput">
+                                    <label class="title-form" for="nom">Nom *</label>
+                                    <input type="text" name="nom"  value="<?php echo $currentUser["nom"] ?>">
+                                </div>
+                            </div>
+                            <div class="squareRow">
+                                <div class="groupInput">
+                                    <label class="title-form" for="email">Email *</label>
+                                    <input type="text" name="email"  value="<?php echo $currentUser["email"] ?>">
+                                </div>
+                                <div class="groupInput">
+                                    <label class="title-form"for="telephone">Téléphone *</label>
+                                    <input type="text" name="telephone"  value="<?php echo $currentUser["tel"] ?>">
+                                </div>
+                            </div>
                         </div>
+                        <div class="controlButton">
                             <button type="submit">Envoyer</button>
+                        </div>
                     </form>
                 </div>
             </div>
