@@ -231,6 +231,14 @@ i{
     justify-content: space-between;
 }
 
+.signupText{
+    color: blue !important;
+    cursor: pointer;
+}
+
+/* MAP */
+
+
 .container-legende{
     display: flex;
     flex-direction: column;
