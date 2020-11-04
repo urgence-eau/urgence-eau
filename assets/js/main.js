@@ -20,6 +20,7 @@ const map = L.map("map-div");
 const all_marker = document.getElementsByClassName("leaflet-marker-icon");
 const all_circle = document.getElementsByClassName("circle");
 
+
 // --- JSON ---
 const fraJson = {
     "type": "FeatureCollection",
@@ -200,4 +201,3 @@ function generate_map(lat, lng) {
 }
 
 // --- /MAP ---
-

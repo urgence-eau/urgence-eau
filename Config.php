@@ -2,10 +2,10 @@
 
 class Config
 {
-    const SERVERNAME="localhost";
+    const SERVERNAME="192.168.64.2";
     const DBNAME="urgenceaudb";
-    const USER="root";
-    const PASSWORD="";
+    const USER="urgenceaudb";
+    const PASSWORD="urgenceaudb";
 
     public static function getDb() {
         mb_internal_encoding('UTF-8');
