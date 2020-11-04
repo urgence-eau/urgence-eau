@@ -7,7 +7,8 @@ window.addEventListener("DOMContentLoaded", event => {
     btnGeo.addEventListener("click",
         () => navigator.geolocation.getCurrentPosition(
             position => {
-                cordonnee.value = `${position.coords.latitude}`;
+                latitude.value = `${position.coords.latitude}`;
+                longitude.value = `${position.coords.longitude}`
             }
 
         )

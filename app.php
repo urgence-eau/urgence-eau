@@ -41,14 +41,14 @@ $departements = Config::getAllDepartement(1); ?>
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <h3>Signaler une fuite</h3>
-                    <form action="" method="post">
+                    <form action="./actions/addPointer.php" method="post">
                         <div class="formGroup">
                             <label for="latitude">Latitude</label>
                             <input id="latitude" type="text" name="latitude" readonly>
                         </div>
                         <div class="formGroup">
                             <label for="longitude">Longitude</label>
-                            <input id="longitude" type="text" name="latitude" readonly>
+                            <input id="longitude" type="text" name="longitude" readonly>
                         </div>
                             <button type="button" id="btn-geo">Je me géolocalise</button>
                         <div class="formGroup">
