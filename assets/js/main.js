@@ -126,24 +126,24 @@ map.addEventListener("click", function (e) {
                         if (e.latlng.lat > 46.5) {
                             if (z[i][0] >= e.latlng.lng && z[i][1] >= e.latlng.lat) {
                                 choose_display();
-                                L.marker(e.latlng).addTo(map);
+                                return L.marker(e.latlng).addTo(map);
                             }
                         } else {
                             if (z[i][0] >= e.latlng.lng && z[i][1] <= e.latlng.lat) {
                                 choose_display();
-                                L.marker(e.latlng).addTo(map);
+                                return L.marker(e.latlng).addTo(map);
                             }
                         }
                     } else {
                         if (e.latlng.lat > 46.5) {
                             if (z[i][0] <= e.latlng.lng && z[i][1] >= e.latlng.lat) {
                                 choose_display();
-                                L.marker(e.latlng).addTo(map);
+                                return L.marker(e.latlng).addTo(map);
                             }
                         } else {
                             if (z[i][0] <= e.latlng.lng && z[i][1] <= e.latlng.lat) {
                                 choose_display();
-                                L.marker(e.latlng).addTo(map);
+                                return L.marker(e.latlng).addTo(map);
                             }
                         }
                     }
