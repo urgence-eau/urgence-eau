@@ -108,6 +108,7 @@ const osm = new L.TileLayer.BoundaryCanvas(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
         boundary: fraJson,
+        minZoom: 6,
     }
 );
 
