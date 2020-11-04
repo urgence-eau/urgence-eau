@@ -23,7 +23,6 @@ $departements = Config::getAllDepartement(1);
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <h3>Signaler une fuite</h3>
-                    <form action="" method="post">
                         <div class="formGroup">
                             <label for="cordonne">Vos cordonnées</label>
                             <input id="cordonnee" type="text" name="cordonnee" readonly>
@@ -37,8 +36,6 @@ $departements = Config::getAllDepartement(1);
                                 <?php } ?>
                             </select>
                         </div>
-                        <input type="submit" value="Signaler">
-                    </form>
                 </div>
             </div>
         </div>
