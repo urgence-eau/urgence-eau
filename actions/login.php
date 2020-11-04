@@ -5,9 +5,9 @@ $email = filter_input(INPUT_POST, "email");
 $password = filter_input(INPUT_POST, "password");
 
 //On regarde dans la base s'il existe les identifiants récupéré dans les saisies
-$r =Config::getDb()->prepare("select * from user where email = :email and motDePasse = :motdepasse");
+$r =Config::getDb()->prepare("select * from user where email = :email and password = :password");
 $r->bindParam(":email", $email);
-$r->bindParam(":motdepasse", $password);
+$r->bindParam(":password", $password);
 $r->execute();
 
 //Si la requete nous renvoi au moins une ligne alors l'utilisateur existe

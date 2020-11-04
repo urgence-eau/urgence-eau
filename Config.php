@@ -25,4 +25,11 @@ class Config
         return $r->fetchAll();
     }
 
+    public static function getAllDepartement($id){
+        $r = self::getDb()->prepare("select * from departement where region_id=:id");
+        $r->bindParam(":id", $id);
+        $r->execute();
+        return $r->fetchAll();
+    }
+
 }

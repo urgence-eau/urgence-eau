@@ -80,7 +80,7 @@ include_once "header.php" ?>
         <h2 id="obj">Notre objectif ?</h2>
         <p class="description-obj">Les difficultés liées à la distribution de l’eau potable sur le territoire, perdurent principalement en raison de la vétusté des réseaux. C’est surtout à l’échelle locale que la préservation de l’eau se joue. Les fuites représentent encore un litre d’eau sur cinq distribués soit un total impressionnant de 1 300 milliards de litres d'eau ou 430 000 piscines olympiques par an.</p>
         <p class="description-obj">Notre plateforme a pour objectif de remonter les incidents signalés. La détection et de réparation de fuites, visibles et invisibles,  permet de réduire les pertes sur les réseaux afin que l’eau potable produite, dont la quantité est suffisante, ne soit pas gaspillée. </p>
-        <button id="btn-map">Consulter la map</button>
+        <a id="btn-map">Consulter la map</a>
     </div>
     <img id="illustration-obj" src="./assets/image/undraw_unexpected_friends_tg6k.svg" alt="">
 </div>
