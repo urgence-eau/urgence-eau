@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", event => {
 
 });
 
-
+// import {table} from '../../app.php';
 const map = L.map("map-div");
 const all_marker = document.getElementsByClassName("leaflet-marker-icon");
 const all_circle = document.getElementsByClassName("circle");
@@ -132,11 +132,13 @@ map.addEventListener("click", function (e) {
                         if (e.latlng.lat > 46.5) {
                             if (z[i][0] >= e.latlng.lng && z[i][1] >= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         } else {
                             if (z[i][0] >= e.latlng.lng && z[i][1] <= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         }
@@ -144,11 +146,13 @@ map.addEventListener("click", function (e) {
                         if (e.latlng.lat > 46.5) {
                             if (z[i][0] <= e.latlng.lng && z[i][1] >= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         } else {
                             if (z[i][0] <= e.latlng.lng && z[i][1] <= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         }
@@ -201,4 +205,6 @@ function generate_map(lat, lng) {
     map.setView([lat, lng], 13);
 }
 
+
 // --- /MAP ---
+export {map, choose_display};

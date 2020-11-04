@@ -19,6 +19,7 @@ class Config
         return $r->fetch();
     }
 
+
     public static function getAllIncident(){
         $r = self::getDb()->prepare("select * from incident");
         $r->execute();

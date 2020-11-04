@@ -1,8 +1,10 @@
 <?php
 require_once 'Config.php';
 include_once "header.php";
-$departements = Config::getAllDepartement(1); ?>
 
+$departements = Config::getAllDepartement(1);
+$rows = Config::getAllIncident();
+?>
 <div class="all-container">
     <div class="container-map">
         <div class="container-legende">
@@ -68,4 +70,24 @@ $departements = Config::getAllDepartement(1); ?>
         </div>
     </div>
 </div>
+
+<script type="module">
+    import {map, choose_display} from './assets/js/main.js';
+
+    const table = [];
+    function f() {
+        <?php
+        foreach ($rows as $row){
+        ?>
+        table.push([<?php echo $row["lat"]?>, <?php echo $row["lng"]?>]);
+        <?php
+            }
+        ?>
+    }
+    f();
+
+    table.map((x)=> L.marker(x).addTo(map));
+    choose_display();
+</script>
+
 <?php include_once "footer.php" ?>
