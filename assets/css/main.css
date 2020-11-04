@@ -224,6 +224,7 @@ i{
 .map{
     height: 100vh;
     width: 100vw;
+    background: none !important;
 }
 
 .leaflet-pane .leaflet-shadow-pane {
