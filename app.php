@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once 'Config.php';
 include_once "header.php";
 
 
@@ -8,7 +8,7 @@ $departements = Config::getAllDepartement(1);
 ?>
 
 <div class="all-container">
-    <div class="map">
+    <div class="map" id="map-div">
 
     </div>
     <div class="controller-container">
