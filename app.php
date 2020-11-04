@@ -1,11 +1,7 @@
 <?php
 require_once 'config.php';
 include_once "header.php";
-
-
-$departements = Config::getAllDepartement(1);
-
-?>
+$departements = Config::getAllDepartement(1); ?>
 
 <div class="all-container">
     <div class="map">
@@ -23,6 +19,7 @@ $departements = Config::getAllDepartement(1);
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <h3>Signaler une fuite</h3>
+                    <form action="" method="post">
                         <div class="formGroup">
                             <label for="cordonne">Vos cordonnées</label>
                             <input id="cordonnee" type="text" name="cordonnee" readonly>
@@ -35,7 +32,9 @@ $departements = Config::getAllDepartement(1);
                                         </option>
                                 <?php } ?>
                             </select>
+                            <button type="submit">Signaler</button>
                         </div>
+                    </form>
                 </div>
             </div>
         </div>
