@@ -219,3 +219,15 @@ i{
     align-items: center;
 }
 
+/* MAP */
+
+.map{
+    height: 100vh;
+    width: 100vw;
+}
+
+.leaflet-pane .leaflet-shadow-pane {
+    display: none;
+}
+
+/* /MAP */
