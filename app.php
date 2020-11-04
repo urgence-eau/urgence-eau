@@ -1,7 +1,7 @@
 <?php
-require_once 'Config.php';
+require_once './Config.php';
 include_once "header.php";
-$departements = Config::getAllDepartement(1); ?>
+//$departements = Config::getAllDepartement(1); ?>
 
 <div class="all-container">
     <div class="container-map">
@@ -40,19 +40,35 @@ $departements = Config::getAllDepartement(1); ?>
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <h3>Signaler une fuite</h3>
+                    <h3>Formulaire de signalement de fuite</h3>
                     <form action="./actions/addPointer.php" method="post">
                         <div class="formGroup">
-                            <label for="latitude">Latitude</label>
-                            <input id="latitude" type="text" name="latitude" readonly>
+                            <div class="title-form">Avez-vous vu un marquage au sol à proximité de la fuite ? *</div>
+                            <input type="radio" name="marquageYes">
+                            <label for="marqueYes">Oui</label>
+                            <input type="radio" name="marquageNon">
+                            <label for="marqueNon">Non</label>
+                            <span>SI OUI merci de cocher cette case et de noter dans le commentaire l'annotation sur le sol</span>
                         </div>
                         <div class="formGroup">
-                            <label for="longitude">Longitude</label>
-                            <input id="longitude" type="text" name="longitude" readonly>
+                            <label for="importance" class="title-form">Importance de la fuite :</label>
+                            <select name="importance">
+                                <option value="1">Faible</option>
+                                <option value="2">Moyen</option>
+                                <option value="3">Fort</option>
+                            </select>
+                            <label for="commentaire">Commentaire</label>
+                            <textarea name="commentaire" cols="30" rows="10"></textarea>
                         </div>
+                        <h3>Lieu de la fuite</h3>
+                        <div class="formGroup">
+                            <span>Si vous êtes près de la fuite, géolocalisez-vous en cliquant sur ce button *</span>
+                            <input id="latitude" type="hidden" name="latitude" readonly>
+                            <input id="longitude" type="hidden" name="longitude" readonly>
                             <button type="button" id="btn-geo">Je me géolocalise</button>
+                        </div>
                         <div class="formGroup">
-                            <label for="departement">departement</label>
+                            <label for="departement">Département</label>
                             <select name="departement">
                                 <?php foreach ($departements as $departement){ ?>
                                         <option value="<?php echo $departement["id"]?>">
@@ -61,7 +77,18 @@ $departements = Config::getAllDepartement(1); ?>
                                 <?php } ?>
                             </select>
                         </div>
-                            <button type="submit">Signaler</button>
+                        <h3>Comment vous joindre ?</h3>
+                        <div class="formGroup">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" name="prenom">
+                            <label for="nom">Nom</label>
+                            <input type="text" name="nom">
+                            <label for="email">Email</label>
+                            <input type="text" name="email">
+                            <label for="telephone">Téléphone</label>
+                            <input type="text" name="telephone">
+                        </div>
+                            <button type="submit">Envoyer</button>
                     </form>
                 </div>
             </div>

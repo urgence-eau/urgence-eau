@@ -272,6 +272,18 @@ i{
     font-family: 'Roboto', sans-serif;
 }
 
+.modal-content h3{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content label{
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+}
+
 /* MAP */
 .leaflet-pane .leaflet-shadow-pane {
     display: none;
