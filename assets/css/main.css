@@ -13,7 +13,7 @@ button{
     font-weight: 500;
     font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px !important;
     padding: 1.5vh;
     cursor: pointer;
 }
@@ -27,7 +27,7 @@ img{
     margin-bottom: 10px;
 }
 
-h1{
+h1.title{
     font-size: 64px;
     color: #FFFFFF;
     text-align: center;
@@ -44,17 +44,34 @@ h2{
     color: #4A4A4A;
 }
 
-h3{
+h3.title-under{
     color: #9B9B9B;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
-p{
+p.description-obj{
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.formGroup{
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"]{
+    margin-top: 20px;
 }
 
 .header-element{
@@ -113,7 +130,8 @@ p{
     background-color: #4945FF;
 }
 
-.card{
+
+.card-stat{
     display: flex;
     flex-direction: column;
     justify-content: center;

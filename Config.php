@@ -3,7 +3,7 @@
 class Config
 {
     const SERVERNAME="localhost";
-    const DBNAME="myschoolevent";
+    const DBNAME="urgenceaudb";
     const USER="root";
     const PASSWORD="";
 
@@ -19,8 +19,8 @@ class Config
         return $r->fetch();
     }
 
-    public static function getAllSignalement(){
-        $r = self::getDb()->prepare("select * from signalement");
+    public static function getAllIncident(){
+        $r = self::getDb()->prepare("select * from incident");
         $r->execute();
         return $r->fetchAll();
     }
