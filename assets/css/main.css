@@ -217,6 +217,7 @@ i{
     margin-top: 25px;
     width: 85%;
     height: 65vh;
+    background: none !important;
 }
 .all-container{
     display: flex;
