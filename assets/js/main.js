@@ -108,6 +108,7 @@ const osm = new L.TileLayer.BoundaryCanvas(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
         boundary: fraJson,
+        minZoom: 6,
     }
 );
 
@@ -118,6 +119,9 @@ map.fitBounds(frLayer.getBounds());
 const coord = osm.options.boundary.features.map((x) => x.geometry.coordinates);
 
 map.addEventListener("click", function (e) {
+    if (map.boxZoom._map._zoom <= 16){
+        return;
+    }
     coord.map((x) =>
         x.map((y) =>
             y.map((z) => {
