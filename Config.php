@@ -25,6 +25,11 @@ class Config
         $r->execute();
         return $r->fetchAll();
     }
+    public static function getAllUnrepairedIncident(){
+        $r = self::getDb()->prepare("select * from incident where etat !='2' ");
+        $r->execute();
+        return $r->fetchAll();
+    }
 
     public static function getAllIncidentFromDepartement($id){
         $r = self::getDb()->prepare("select * from incident where departement_id=:id");

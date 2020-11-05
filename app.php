@@ -45,6 +45,9 @@ $currentUser = Config::getUser($_SESSION["id"]);
             Deconnexion
         </button>
         </form>
+        <?php if ($_SESSION["role"]==1): ?>
+            <a href="backoffice.php"> Accès backoffice</a>
+        <?php endif; ?>
         <button id="btn-incident" data-toggle="modal" data-target=".bd-example-modal-lg">
             Signaler une fuite
         </button>
