@@ -53,7 +53,7 @@ $currentUser = Config::getUser($_SESSION["id"]);
                         <div class="modal-content">
                             <h3>Formulaire de signalement de fuite</h3>
                             <div class="marqueur"><div class="trait"></div></div>
-                            <form action="./actions/addPointer.php" method="post">
+                            <form action="./actions/addPointer.php" method="post" class="formAdd">
                                 <div class="formGroup">
                                     <div class="title-form">Avez-vous vu un marquage au sol à proximité de la fuite ? *</div>
                                     <div class="groupRad">
@@ -271,7 +271,6 @@ $currentUser = Config::getUser($_SESSION["id"]);
         .bindPopup(`Nombre d'incident : ${nbIncidentRadius[i]}`)
         .addTo(map)
     );
-
     choose_display();
 </script>
 

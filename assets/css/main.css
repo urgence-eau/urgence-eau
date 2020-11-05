@@ -309,6 +309,11 @@ table
     width: 33%;
 }
 
+.toGreen{
+    background-color: #11E66D !important;
+    transition: background-color 1s ease;
+}
+
 .modal-content form{
     width: 75%;
 }
