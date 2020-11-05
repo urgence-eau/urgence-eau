@@ -2,13 +2,24 @@ window.addEventListener("DOMContentLoaded", event => {
     const btnGeo = document.getElementById("btn-geo");
     const latitude = document.querySelector("#latitude");
     const longitude = document.querySelector("#longitude");
-    console.log(btnGeo, latitude, longitude);
+    const formAdd = document.querySelector(".formAdd");
+    console.log(formAdd);
+
+    formAdd.addEventListener("submit", (event) => {
+            if(latitude.value.length === 0 && longitude.value.length === 0){
+                event.preventDefault();
+            }
+        }
+    )
 
     btnGeo.addEventListener("click",
         () => navigator.geolocation.getCurrentPosition(
             position => {
                 latitude.value = `${position.coords.latitude}`;
-                longitude.value = `${position.coords.longitude}`
+                longitude.value = `${position.coords.longitude}`;
+                btnGeo.style.backgroundColor = "#11E66D";
+                btnGeo.innerText = "Vous êtes localisé";
+                btnGeo.classList.add("toGreen");
             }
 
         )
