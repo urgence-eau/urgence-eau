@@ -18,5 +18,7 @@ $r->bindParam(":password", $password);
 $r->bindParam(":prenom", $prenom);
 $r->execute();
 
+header("Location: ../accueil.php");
+
 
 

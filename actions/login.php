@@ -20,4 +20,4 @@ if($r->rowCount() > 0){
     $_SESSION["id"] = $user["id"];
     $_SESSION["role"] = $user["role"];
 }
-header("Location: ../");
+header("Location: ../app.php");

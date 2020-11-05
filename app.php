@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './Config.php';
 include_once "header.php";
 
@@ -8,6 +9,7 @@ $rows = Config::getAllIncident();
 if(isset($_SESSION["id"])){
     $currentUser = Config::getUser($_SESSION["id"]);
 }
+
 ?>
 <div class="all-container">
     <div class="container-map">
