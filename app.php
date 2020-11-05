@@ -39,89 +39,151 @@ $currentUser = Config::getUser($_SESSION["id"]);
             <h4 id="title-ita">Témoin d'une fuite ?</h4>
             <span>Signalez la et sauvegardez des milliers de litres d'eau</span>
         </div>
+        <?php if (isset($_SESSION["id"])): ?>
+        <form action="actions/logout.php" method="post">
+        <button id="btn-incident" data-toggle="modal" type="submit">
+            Deconnexion
+        </button>
+        </form>
         <button id="btn-incident" data-toggle="modal" data-target=".bd-example-modal-lg">
             Signaler une fuite
         </button>
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <h3>Formulaire de signalement de fuite</h3>
-                    <div class="marqueur"><div class="trait"></div></div>
-                    <form action="./actions/addPointer.php" method="post">
-                        <div class="formGroup">
-                            <div class="title-form">Avez-vous vu un marquage au sol à proximité de la fuite ? *</div>
-                            <div class="groupRad">
-                                <input type="radio" name="marquage" value="1">
-                                <label for="marqueYes">Oui</label>
-                            </div>
-                            <div class="groupRad">
-                                <input type="radio" name="marquage" value="0">
-                                <label for="marqueNon">Non</label>
-                            </div>
-                            <span id="indic">SI OUI merci de cocher cette case et de noter dans le commentaire l'annotation sur le sol</span>
-                        </div>
-                        <div class="formGroup">
-                            <label for="importance" class="title-form">Importance de la fuite : *</label>
-                            <select name="importance">
-                                <option value="1">Faible</option>
-                                <option value="2">Moyen</option>
-                                <option value="3">Fort</option>
-                            </select>
-                        </div>
-                        <div class="formGroup">
-                            <label for="commentaire" class="title-form">Commentaire</label>
-                            <textarea name="commentaire" cols="30" rows="4"></textarea>
-                        </div>
-                        <h3>Lieu de la fuite</h3>
-                        <div class="marqueur"><div class="trait"></div></div>
-                        <div class="formGroup centered">
-                            <span id="geoInfo">Si vous êtes près de la fuite, géolocalisez-vous en cliquant sur ce button *</span>
-                            <input id="latitude" type="hidden" name="latitude" readonly>
-                            <input id="longitude" type="hidden" name="longitude" readonly>
-                            <button type="button" id="btn-geo">Je me géolocalise</button>
-                        </div>
-                        <div class="formGroup">
-                            <label for="departement" class="title-form">Département</label>
-                            <select name="departement">
-                                <?php foreach ($departements as $departement){ ?>
-                                        <option value="<?php echo $departement["id"]?>">
-                                            <?php echo $departement["nom"]?>
-                                        </option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <h3>Comment vous joindre ?</h3>
-                        <div class="marqueur"><div class="trait"></div></div>
-                        <div class="formGroup">
-                            <div class="squareRow">
-                                <div class="groupInput">
-                                    <label class="title-form" for="prenom">Prénom *</label>
-                                    <input type="text" name="prenom" value="<?php echo $currentUser["prenom"] ?>">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <h3>Formulaire de signalement de fuite</h3>
+                            <div class="marqueur"><div class="trait"></div></div>
+                            <form action="./actions/addPointer.php" method="post">
+                                <div class="formGroup">
+                                    <div class="title-form">Avez-vous vu un marquage au sol à proximité de la fuite ? *</div>
+                                    <div class="groupRad">
+                                        <input type="radio" name="marquage" value="1">
+                                        <label for="marqueYes">Oui</label>
+                                    </div>
+                                    <div class="groupRad">
+                                        <input type="radio" name="marquage" value="0">
+                                        <label for="marqueNon">Non</label>
+                                    </div>
+                                    <span id="indic">SI OUI merci de cocher cette case et de noter dans le commentaire l'annotation sur le sol</span>
                                 </div>
-                                <div class="groupInput">
-                                    <label class="title-form" for="nom">Nom *</label>
-                                    <input type="text" name="nom"  value="<?php echo $currentUser["nom"] ?>">
+                                <div class="formGroup">
+                                    <label for="importance" class="title-form">Importance de la fuite : *</label>
+                                    <select name="importance">
+                                        <option value="1">Faible</option>
+                                        <option value="2">Moyen</option>
+                                        <option value="3">Fort</option>
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="squareRow">
-                                <div class="groupInput">
-                                    <label class="title-form" for="email">Email *</label>
-                                    <input type="text" name="email"  value="<?php echo $currentUser["email"] ?>">
+                                <div class="formGroup">
+                                    <label for="commentaire" class="title-form">Commentaire</label>
+                                    <textarea name="commentaire" cols="30" rows="4"></textarea>
                                 </div>
-                                <div class="groupInput">
-                                    <label class="title-form"for="telephone">Téléphone *</label>
-                                    <input type="text" name="telephone"  value="<?php echo $currentUser["tel"] ?>">
+                                <h3>Lieu de la fuite</h3>
+                                <div class="marqueur"><div class="trait"></div></div>
+                                <div class="formGroup centered">
+                                    <span id="geoInfo">Si vous êtes près de la fuite, géolocalisez-vous en cliquant sur ce button *</span>
+                                    <input id="latitude" type="hidden" name="latitude" readonly>
+                                    <input id="longitude" type="hidden" name="longitude" readonly>
+                                    <button type="button" id="btn-geo">Je me géolocalise</button>
                                 </div>
-                            </div>
+                                <div class="formGroup">
+                                    <label for="departement" class="title-form">Département</label>
+                                    <select name="departement">
+                                        <?php foreach ($departements as $departement){ ?>
+                                            <option value="<?php echo $departement["id"]?>">
+                                                <?php echo $departement["nom"]?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <h3>Comment vous joindre ?</h3>
+                                <div class="marqueur"><div class="trait"></div></div>
+                                <div class="formGroup">
+                                    <div class="squareRow">
+                                        <div class="groupInput">
+                                            <label class="title-form" for="prenom">Prénom *</label>
+                                            <input type="text" name="prenom" value="<?php echo $currentUser["prenom"] ?>">
+                                        </div>
+                                        <div class="groupInput">
+                                            <label class="title-form" for="nom">Nom *</label>
+                                            <input type="text" name="nom"  value="<?php echo $currentUser["nom"] ?>">
+                                        </div>
+                                    </div>
+                                    <div class="squareRow">
+                                        <div class="groupInput">
+                                            <label class="title-form" for="email">Email *</label>
+                                            <input type="text" name="email"  value="<?php echo $currentUser["email"] ?>">
+                                        </div>
+                                        <div class="groupInput">
+                                            <label class="title-form"for="telephone">Téléphone *</label>
+                                            <input type="text" name="telephone"  value="<?php echo $currentUser["tel"] ?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="controlButton">
+                                    <button type="submit">Envoyer</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="controlButton">
-                            <button type="submit">Envoyer</button>
-                        </div>
-                    </form>
+                    </div>
+                </div>
+        </div>
+        <?php else: ?>
+            <button id="btn-incident" data-toggle="modal" data-target=".bd-connexion-modal-lg">
+                Se connecter
+            </button>
+            <div id="modal" class="modal fade bd-connexion-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <h3>Urgence eau</h3>
+                        <form action="actions/login.php" method="post">
+                            <div class="formGroup">
+                                <label for="email">Email</label>
+                                <input type="text" name="email">
+                            </div>
+                            <div class="formGroup">
+                                <label for="password">Password</label>
+                                <input type="password" name="password">
+                            </div>
+                            <input type="submit">
+                        </form>
+                        <a class="signupText" id="signup" data-toggle="modal" data-target=".bd-example-modal-signup">Pas encore inscrit ?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade bd-example-modal-signup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <h3>Inscrit toi</h3>
+                        <form action="actions/signUp.php" method="post">
+                            <div class="formGroup">
+                                <label for="nom">Nom</label>
+                                <input type="text" name="nom">
+                            </div>
+                            <div class="formGroup">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" name="prenom">
+                            </div>
+                            <div class="formGroup">
+                                <label for="tel">Téléphone</label>
+                                <input type="tel" name="tel">
+                            </div>
+                            <div class="formGroup">
+                                <label for="email">Email</label>
+                                <input type="email" name="email">
+                            </div>
+                            <div class="formGroup">
+                                <label for="password">Password</label>
+                                <input type="password" name="password">
+                            </div>
+                            <input type="submit">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <?php endif ?>
+
     <div class="info-table">
         <table class="table">
             <thead>
