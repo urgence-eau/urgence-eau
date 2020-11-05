@@ -23,7 +23,7 @@ $r->bindParam(":marquage", $marquage);
 
 $r->execute();
 
-header("Location: ../app.js");
+header("Location: ../app.php");
 
 
 

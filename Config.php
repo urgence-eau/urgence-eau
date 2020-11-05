@@ -33,4 +33,8 @@ class Config
         return $r->fetchAll();
     }
 
+    public static function getAllIncidentByDepartement(){
+
+    }
+
 }

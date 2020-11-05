@@ -123,7 +123,6 @@ $currentUser = Config::getUser($_SESSION["id"]);
         </div>
     </div>
 </div>
-
 <script type="module">
     import {map, choose_display} from './assets/js/main.js';
 
@@ -138,8 +137,29 @@ $currentUser = Config::getUser($_SESSION["id"]);
         ?>
     }
     f();
-
     table.map((x)=> L.marker(x).addTo(map));
+
+    const cordonne = [];
+    function f1() {
+        <?php
+        foreach ($departements as $departement){
+            $cord = explode(",", $departement["coordonnees"]);
+        ?>
+        cordonne.push([<?php echo $cord[0]?>, <?php echo $cord[1]?>])
+        <?php
+        }
+        ?>
+    }
+    f1();
+    cordonne.map(x => L.circle(x,
+        {className: "circle",
+        fillColor: "#f03",
+        fillOpacity: 0.2,
+        radius: 45000})
+        .bindPopup("salut")
+        .addTo(map)
+    );
+
     choose_display();
 </script>
 

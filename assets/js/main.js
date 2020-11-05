@@ -98,13 +98,14 @@ navigator.geolocation.getCurrentPosition(function (position) {
     generate_map(position.coords.latitude, position.coords.longitude);
 });
 
-L.circle([48.8, 2.42], {
+/*L.circle([48.8, 2.42], {
     color: "red",
     className: "circle",
     fillColor: "#f03",
     fillOpacity: 0.5,
     radius: 50000,
-}).addTo(map);
+}).bindPopup("Hi There").addTo(map);
+*/
 
 const osm = new L.TileLayer.BoundaryCanvas(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
