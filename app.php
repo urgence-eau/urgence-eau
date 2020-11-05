@@ -155,8 +155,18 @@ $currentUser = Config::getUser($_SESSION["id"]);
 </div>
 <script type="module">
     import {map, choose_display} from './assets/js/main.js';
-
     const table = [];
+
+    const chooseColor = (nbIncident) => {
+        if(nbIncident >= 5){
+            return "#E8232F";
+        }else if(nbIncident >= 2){
+            return "#F9E63F";
+        }else{
+            return "#45DE42";
+        }
+    }
+
     function f() {
         <?php
         foreach ($rows as $row){
@@ -170,23 +180,28 @@ $currentUser = Config::getUser($_SESSION["id"]);
     table.map((x)=> L.marker(x).addTo(map));
 
     const cordonne = [];
+    let nbIncidentRadius = [];
     function f1() {
         <?php
         foreach ($departements as $departement){
             $cord = explode(",", $departement["coordonnees"]);
+            $nbIncidentRadius = Config::getAllIncidentFromDepartement($departement["id"])
         ?>
+        nbIncidentRadius.push(<?php echo $nbIncidentRadius?>);
         cordonne.push([<?php echo $cord[0]?>, <?php echo $cord[1]?>])
         <?php
         }
         ?>
     }
     f1();
-    cordonne.map(x => L.circle(x,
-        {className: "circle",
-        fillColor: "#ff0033",
-        fillOpacity: 0.2,
-        radius: 45000})
-        .bindPopup("salut")
+    cordonne
+        .map(
+            (x, i) => L.circle(x,
+                    {className: "circle",
+                    fillColor: chooseColor(parseInt(nbIncidentRadius[i])),
+                    fillOpacity: 0.5,
+                    radius: parseInt(nbIncidentRadius[i])*8000})
+        .bindPopup(`Nombre d'incident : ${nbIncidentRadius[i]}`)
         .addTo(map)
     );
 
