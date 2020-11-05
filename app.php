@@ -12,7 +12,7 @@ $currentUser = Config::getUser($_SESSION["id"]);
     <div class="container-map">
         <div class="container-legende">
             <div class="card-legend">
-                <div class="square" style="background-color: #45DE42">
+                <div class="square" style="background-color: #E8232F">
                 </div>
                 <span>0% - 20%</span>
             </div>
@@ -22,7 +22,7 @@ $currentUser = Config::getUser($_SESSION["id"]);
                 <span>20% - 60%</span>
             </div>
             <div class="card-legend">
-                <div class="square" style="background-color: #E8232F">
+                <div class="square" style="background-color: #45DE42">
                 </div>
                 <span>60% - 100%</span>
             </div>
@@ -220,9 +220,9 @@ $currentUser = Config::getUser($_SESSION["id"]);
     const table = [];
 
     const chooseColor = (nbIncident) => {
-        if(nbIncident >= 5){
+        if(nbIncident <= 20){
             return "#E8232F";
-        }else if(nbIncident >= 2){
+        }else if(nbIncident <= 60){
             return "#F9E63F";
         }else{
             return "#45DE42";
@@ -242,15 +242,20 @@ $currentUser = Config::getUser($_SESSION["id"]);
     table.map((x)=> L.marker(x).addTo(map));
 
     const cordonne = [];
-    let nbIncidentRadius = [];
+    const nbIncidentRadius = [];
+    const pourcentageIncident = [];
     function f1() {
         <?php
         foreach ($departements as $departement){
             $cord = explode(",", $departement["coordonnees"]);
-            $nbIncidentRadius = Config::getAllIncidentFromDepartement($departement["id"])
+            $nbIncidentRadius = Config::getAllIncidentFromDepartement($departement["id"]);
+            $percentIncident = Config::getAllIncidentFromDepartement($departement["id"]) === 0 ?
+                0 :
+                (number_format (Config::getAllRepairedIncidentFromDepartement($departement["id"])/Config::getAllIncidentFromDepartement($departement["id"]), 2)*100);
         ?>
         nbIncidentRadius.push(<?php echo $nbIncidentRadius?>);
-        cordonne.push([<?php echo $cord[0]?>, <?php echo $cord[1]?>])
+        pourcentageIncident.push(<?php echo $percentIncident ?>);
+        cordonne.push([<?php echo $cord[0]?>, <?php echo $cord[1]?>]);
         <?php
         }
         ?>
@@ -260,9 +265,9 @@ $currentUser = Config::getUser($_SESSION["id"]);
         .map(
             (x, i) => L.circle(x,
                     {className: "circle",
-                    fillColor: chooseColor(parseInt(nbIncidentRadius[i])),
+                    fillColor: chooseColor(parseInt(pourcentageIncident[i])),
                     fillOpacity: 0.5,
-                    radius: parseInt(nbIncidentRadius[i])*8000})
+                    radius: parseInt(nbIncidentRadius[i])*5000})
         .bindPopup(`Nombre d'incident : ${nbIncidentRadius[i]}`)
         .addTo(map)
     );
