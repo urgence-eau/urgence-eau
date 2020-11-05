@@ -7,7 +7,8 @@ window.addEventListener("DOMContentLoaded", event => {
     btnGeo.addEventListener("click",
         () => navigator.geolocation.getCurrentPosition(
             position => {
-                cordonnee.value = `${position.coords.latitude}`;
+                latitude.value = `${position.coords.latitude}`;
+                longitude.value = `${position.coords.longitude}`
             }
 
         )
@@ -15,10 +16,11 @@ window.addEventListener("DOMContentLoaded", event => {
 
 });
 
-
+// import {table} from '../../app.php';
 const map = L.map("map-div");
 const all_marker = document.getElementsByClassName("leaflet-marker-icon");
 const all_circle = document.getElementsByClassName("circle");
+
 
 // --- JSON ---
 const fraJson = {
@@ -96,13 +98,14 @@ navigator.geolocation.getCurrentPosition(function (position) {
     generate_map(position.coords.latitude, position.coords.longitude);
 });
 
-L.circle([48.8, 2.42], {
+/*L.circle([48.8, 2.42], {
     color: "red",
     className: "circle",
     fillColor: "#f03",
     fillOpacity: 0.5,
     radius: 50000,
-}).addTo(map);
+}).bindPopup("Hi There").addTo(map);
+*/
 
 const osm = new L.TileLayer.BoundaryCanvas(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -130,11 +133,13 @@ map.addEventListener("click", function (e) {
                         if (e.latlng.lat > 46.5) {
                             if (z[i][0] >= e.latlng.lng && z[i][1] >= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         } else {
                             if (z[i][0] >= e.latlng.lng && z[i][1] <= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         }
@@ -142,11 +147,13 @@ map.addEventListener("click", function (e) {
                         if (e.latlng.lat > 46.5) {
                             if (z[i][0] <= e.latlng.lng && z[i][1] >= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         } else {
                             if (z[i][0] <= e.latlng.lng && z[i][1] <= e.latlng.lat) {
                                 choose_display();
+                                console.log(e.latlng);
                                 return L.marker(e.latlng).addTo(map);
                             }
                         }
@@ -199,5 +206,6 @@ function generate_map(lat, lng) {
     map.setView([lat, lng], 13);
 }
 
-// --- /MAP ---
 
+// --- /MAP ---
+export {map, choose_display};

@@ -19,6 +19,7 @@ class Config
         return $r->fetch();
     }
 
+
     public static function getAllIncident(){
         $r = self::getDb()->prepare("select * from incident");
         $r->execute();
@@ -69,6 +70,10 @@ class Config
         $r = self::getDb()->prepare("select * from region");
         $r->execute();
         return $r->fetchAll();
+    }
+
+    public static function getAllIncidentByDepartement(){
+
     }
 
 }

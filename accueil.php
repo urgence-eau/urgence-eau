@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once 'Config.php';
 include_once "header.php" ?>
 
 <div class="header-element">
@@ -12,14 +12,45 @@ include_once "header.php" ?>
     <button id="btn-title" data-toggle="modal" data-target=".bd-example-modal-lg">
         Signaler une fuite
     </button>
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <h3>Urgence eau</h3>
                 <form action="actions/login.php" method="post">
                     <div class="formGroup">
                         <label for="email">Email</label>
-                            <input type="text" name="email">
+                        <input type="text" name="email">
+                    </div>
+                    <div class="formGroup">
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+                    </div>
+                    <input type="submit">
+                </form>
+                <a class="signupText" id="signup" data-toggle="modal" data-target=".bd-example-modal-signup">Pas encore inscrit ?</a>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-signup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <h3>Inscrit toi</h3>
+                <form action="actions/signUp.php" method="post">
+                    <div class="formGroup">
+                        <label for="nom">Nom</label>
+                        <input type="text" name="nom">
+                    </div>
+                    <div class="formGroup">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" name="prenom">
+                    </div>
+                    <div class="formGroup">
+                        <label for="tel">Téléphone</label>
+                        <input type="tel" name="tel">
+                    </div>
+                    <div class="formGroup">
+                        <label for="email">Email</label>
+                        <input type="email" name="email">
                     </div>
                     <div class="formGroup">
                         <label for="password">Password</label>
