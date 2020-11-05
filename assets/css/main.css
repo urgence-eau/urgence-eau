@@ -4,9 +4,9 @@ body {
     font-family: 'Montserrat Alternates', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("../image/Ellipse_16.svg");
-    background-repeat: no-repeat;
-    background-position: left 28%;
+    background-image: url("../image/Ellipse_16.svg"), url("../image/Vector 1.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left 28%, right bottom;
 }
 
 button{
@@ -19,6 +19,26 @@ button{
     border-radius: 5px !important;
     padding: 1.5vh;
     cursor: pointer;
+}
+
+a#btn-map{
+    display: flex;
+    justify-content: center;
+    background-color: #4945FF !important;
+    color: #FFFFFF !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px !important;
+    padding: 1.5vh;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header-container a{
+    margin-top: 35px !important;
+    margin-left: 225px;
 }
 
 img{
@@ -58,8 +78,8 @@ h3.title-under{
 }
 
 p.description-obj{
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-family: 'Cabin', sans-serif;
 }
 
 .modal-content{
@@ -105,6 +125,7 @@ input[type="text"]{
     font-family: 'Cabin', sans-serif;
     color: #000000;
     font-weight: 300;
+    margin-top: 20px;
 }
 
 .stats-content{
@@ -131,10 +152,10 @@ input[type="text"]{
 .number{
     display: flex;
     justify-content: center;
-    font-family: 'Montserrat Alternates', sans-serif;
-    color: #4A4A4A;
-    font-weight: 700;
-    font-size: 27px;
+    font-family: 'Cabin', sans-serif;
+    color: #000000;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .separate{
@@ -150,6 +171,7 @@ input[type="text"]{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 20px;
 }
 
 .card-feature{
@@ -169,11 +191,41 @@ input[type="text"]{
     text-align: center;
 }
 
+.card-stat img{
+    height: 50px;
+}
+
+.card-stat p{
+    font-family: 'Cabin', sans-serif;
+    font-size:18px;
+    margin: 0;
+    max-width: 300px;
+    text-align: center;
+}
+
+.stats-container{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+}
+
 .objectif-container{
+    z-index: auto;
+    margin: auto;
     display: flex;
     justify-content: space-around;
+    background-color: #FFFFFF;
     align-items: center;
-    height: 50vh;
+    height: 60vh;
+    width: 95%;
+    padding: 20px;
+    border: 1px solid #EAEBED ;
+    border-radius: 10px;
+}
+
+.objectif-container span{
+    font-weight: bold;
 }
 
 #obj{
@@ -200,8 +252,7 @@ input[type="text"]{
 
 .reseau-sociaux{
     margin-top: 50px;
-    background-color: #EDEDED;
-    height: 30vh;
+    height: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -223,10 +274,35 @@ i{
     display: flex;
     padding: 25px;
     width: 125vh;
-    border: 2px solid #EAEBED;
+    border: 1px solid #EAEBED;
+    background-color: #FFFFFF;
     border-radius: 10px;
     justify-content: space-between;
 }
+
+h5{
+    font-family: 'Montserrat', sans-serif ;
+    font-size: 20px;
+    font-weight: bold !important;
+    margin-bottom: 25px !important;
+}
+
+.container-table{
+    margin-top: 20px;
+    padding: 35px;
+    width: 95%;
+    border-radius: 10px;
+    border: 1px solid #EAEBED;
+    background-color: #FFFFFF;
+    margin-bottom: 55px;
+}
+
+.info-table{
+    margin: 0 !important;
+    display: flex;
+    width: 100%;
+}
+
 #map-div{
     margin-top: 25px;
     width: 85%;
@@ -311,6 +387,24 @@ table
     font-size: 13px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+}
+
+.controller-container > form > button{
+    width: 100%;
+
+}
+
+.controller-container > form{
+    margin: 0;
+}
+
+table, th, td, tr{
+    font-family: 'Cabin', sans-serif !important;
+    text-align: center;
+}
+
+th{
+    font-weight: bold !important;
 }
 
 #btn-geo{

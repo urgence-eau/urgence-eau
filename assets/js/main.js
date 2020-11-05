@@ -3,7 +3,6 @@ window.addEventListener("DOMContentLoaded", event => {
     const latitude = document.querySelector("#latitude");
     const longitude = document.querySelector("#longitude");
     const formAdd = document.querySelector(".formAdd");
-    console.log(formAdd);
 
     formAdd.addEventListener("submit", (event) => {
             if(latitude.value.length === 0 && longitude.value.length === 0){

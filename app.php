@@ -1,12 +1,13 @@
 <?php
-session_start();
 require_once './Config.php';
 include_once "header.php";
 
 $regions = Config::getAllRegion();
 $departements = Config::getAllDepartement(1);
 $rows = Config::getAllIncident();
-$currentUser = Config::getUser($_SESSION["id"]);
+if(isset($_SESSION["id"])){
+    $currentUser = Config::getUser($_SESSION["id"]);
+}
 ?>
 <div class="all-container">
     <div class="container-map">
@@ -41,9 +42,9 @@ $currentUser = Config::getUser($_SESSION["id"]);
         </div>
         <?php if (isset($_SESSION["id"])): ?>
         <form action="actions/logout.php" method="post">
-        <button id="btn-incident" data-toggle="modal" type="submit">
-            Deconnexion
-        </button>
+            <button id="btn-incident" data-toggle="modal" type="submit">
+                Deconnexion
+            </button>
         </form>
         <?php if ($_SESSION["role"]==1): ?>
             <a href="backoffice.php"> Accès backoffice</a>
@@ -94,7 +95,7 @@ $currentUser = Config::getUser($_SESSION["id"]);
                                     <select name="departement">
                                         <?php foreach ($departements as $departement){ ?>
                                             <option value="<?php echo $departement["id"]?>">
-                                                <?php echo $departement["nom"]?>
+                                                <?php echo utf8_decode($departement["nom"])?>
                                             </option>
                                         <?php } ?>
                                     </select>
@@ -194,36 +195,36 @@ $currentUser = Config::getUser($_SESSION["id"]);
             </div>
         </div>
         <?php endif ?>
-
-    <div class="info-table">
-        <table class="table">
-            <thead>
-            <tr class="table-active">
-                <th scope="col">Lieu</th>
-                <th scope="col">Nombre total d’incident</th>
-                <th scope="col">Nombre d’incident traîtés</th>
-                <th scope="col">Proportions d'incident traîtés</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($regions as $region){ ?>
-                <tr>
-                    <th scope="row"><?php echo $region["nom"]?></th>
-                    <td><?php echo Config::getAllIncidentFromRegion($region["id"])?></td>
-                    <td><?php echo Config::getAllRepairedIncidentFromRegion($region["id"])?></td>
-                    <td><?php echo Config::getAllIncidentFromRegion($region["id"]) === 0 ? "Aucun incident" : (number_format (Config::getAllRepairedIncidentFromRegion($region["id"])/Config::getAllIncidentFromRegion($region["id"]), 2)*100)."%"?></td>
+    <div class="container-table">
+        <h5>Nombre d'incidents</h5>
+        <div class="info-table">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr class="table-active">
+                    <th scope="col">Région</th>
+                    <th scope="col">Département</th>
+                    <th scope="col">Nombre total d’incident</th>
+                    <th scope="col">Nombre d’incident traîtés</th>
+                    <th scope="col">Proportions d'incident traîtés</th>
                 </tr>
-                <?php foreach (Config::getAllDepartement($region["id"]) as $departement){ ?>
+                </thead>
+                <tbody>
+                <?php foreach ($regions as $region){ ?>
                     <tr>
-                        <td scope="row"><?php echo $departement["nom"]?></td>
-                        <td><?php echo Config::getAllIncidentFromDepartement($departement["id"])?></td>
-                        <td><?php echo Config::getAllRepairedIncidentFromDepartement($departement["id"])?></td>
-                        <td><?php echo Config::getAllIncidentFromDepartement($departement["id"]) === 0 ? "Aucun incident" : (number_format (Config::getAllRepairedIncidentFromDepartement($departement["id"])/Config::getAllIncidentFromDepartement($departement["id"]), 2)*100)."%"?></td>
+                        <th scope="row" rowspan="<?php echo (count(Config::getAllDepartement($region["id"]))+1)?>"><?php echo $region["nom"]?></th>
+                        <?php foreach (Config::getAllDepartement($region["id"]) as $departement){ ?>
+                            <tr>
+                                <td scope="row"><?php echo utf8_encode($departement["nom"])?></td>
+                                <td><?php echo Config::getAllIncidentFromDepartement($departement["id"])?></td>
+                                <td><?php echo Config::getAllRepairedIncidentFromDepartement($departement["id"])?></td>
+                                <td><?php echo Config::getAllIncidentFromDepartement($departement["id"]) === 0 ? "Aucun incident" : (number_format (Config::getAllRepairedIncidentFromDepartement($departement["id"])/Config::getAllIncidentFromDepartement($departement["id"]), 2)*100)."%"?></td>
+                            </tr>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
-            <?php } ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script type="module">

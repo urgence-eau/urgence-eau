@@ -19,6 +19,12 @@ class Config
         return $r->fetch();
     }
 
+    public static function getAllIncidentTraite(){
+        $r = self::getDb()->prepare("select * from incident where etat='1' ");
+        $r->execute();
+        $r->fetch();
+        return $r->rowCount();
+    }
 
     public static function getAllIncident(){
         $r = self::getDb()->prepare("select * from incident");
