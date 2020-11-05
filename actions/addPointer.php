@@ -9,7 +9,7 @@ $departement = filter_input(INPUT_POST, "departement");
 $importance = filter_input(INPUT_POST, "importance");
 $marquage = filter_input(INPUT_POST, "marquage");
 $commentaire = filter_input(INPUT_POST, "commentaire");
-$etat = "En cours";
+$etat = "0";
 
 $r = Config::getDb()->prepare("insert into incident (user_id, departement_id, lat, lng, etat, importance, commentaire, marquage)". " value (:idUser, :departement, :latitude, :longitude,  :etat,:importance, :commentaire, :marquage)");
 $r->bindParam(":idUser", $idUser);

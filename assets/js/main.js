@@ -16,6 +16,11 @@ window.addEventListener("DOMContentLoaded", event => {
 
 });
 
+$("#signup").click(() => {
+    $("#modal").modal('hide');
+    }
+)
+
 // import {table} from '../../app.php';
 const map = L.map("map-div");
 const all_marker = document.getElementsByClassName("leaflet-marker-icon");
