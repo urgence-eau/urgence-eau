@@ -135,48 +135,56 @@ $currentUser = Config::getUser($_SESSION["id"]);
             <div id="modal" class="modal fade bd-connexion-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <h3>Urgence eau</h3>
+                        <h3 class="biggerTitle">Connexion</h3>
+                        <div class="marqueur"><div class="trait"></div></div>
                         <form action="actions/login.php" method="post">
                             <div class="formGroup">
-                                <label for="email">Email</label>
+                                <label for="email" class="title-form">Email</label>
                                 <input type="text" name="email">
                             </div>
                             <div class="formGroup">
-                                <label for="password">Password</label>
+                                <label for="password" class="title-form">Password</label>
                                 <input type="password" name="password">
                             </div>
-                            <input type="submit">
+                            <div class="controlButton">
+                                <button type="submit">Connexion</button>
+                            </div>
                         </form>
-                        <a class="signupText" id="signup" data-toggle="modal" data-target=".bd-example-modal-signup">Pas encore inscrit ?</a>
+                        <div class="inscription">
+                            Pas encore inscript ? <a class="signupText" id="signup" data-toggle="modal" data-target=".bd-example-modal-signup">Cliquez ici</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal fade bd-example-modal-signup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <h3>Inscrit toi</h3>
+                        <h3 class="biggerTitle">Inscription</h3>
+                        <div class="marqueur"><div class="trait"></div></div>
                         <form action="actions/signUp.php" method="post">
                             <div class="formGroup">
-                                <label for="nom">Nom</label>
+                                <label for="nom" class="title-form">Nom</label>
                                 <input type="text" name="nom">
                             </div>
                             <div class="formGroup">
-                                <label for="prenom">Prénom</label>
+                                <label for="prenom" class="title-form">Prénom</label>
                                 <input type="text" name="prenom">
                             </div>
                             <div class="formGroup">
-                                <label for="tel">Téléphone</label>
+                                <label for="tel" class="title-form">Téléphone</label>
                                 <input type="tel" name="tel">
                             </div>
                             <div class="formGroup">
-                                <label for="email">Email</label>
+                                <label for="email" class="title-form">Email</label>
                                 <input type="email" name="email">
                             </div>
                             <div class="formGroup">
-                                <label for="password">Password</label>
+                                <label for="password" class="title-form">Password</label>
                                 <input type="password" name="password">
                             </div>
-                            <input type="submit">
+                            <div class="controlButton">
+                                <button type="submit">Je m'inscris</button>
+                            </div>
                         </form>
                     </div>
                 </div>

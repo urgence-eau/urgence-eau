@@ -3,19 +3,23 @@ require_once 'Config.php';
 include_once "header.php" ?>
 
 <div class="header-element">
-    <h1 class="title">
-        Et si on sauvait de l'eau ?
-    </h1>
-    <p class="description">
-        Nous utilisons vos alertes générées pour améliorer le réseau de canalisation et éviter le gaspillage d’eau.
-    </p>
-    <button id="btn-title" data-toggle="modal" data-target=".bd-example-modal-lg">
-        Signaler une fuite
-    </button>
-
+    <div class="header-container">
+        <h1 class="title">
+            Et si on sauvait de l'eau ?
+        </h1>
+        <p class="description">
+            Nous utilisons vos alertes générées pour améliorer le réseau de canalisation et éviter le gaspillage d’eau.
+        </p>
+        <button id="btn-title" data-toggle="modal" data-target=".bd-example-modal-lg">
+                Signaler une fuite
+        </button>
+    </div>
 </div>
 <div class="feature-content">
-    <h2>Comment ça fonctionne ?</h2>
+    <div class="title-container">
+        <h2>Comment ça fonctionne ?</h2>
+        <div class="marqueur"><div class="trait"></div></div>
+    </div>
     <div class="card-content">
         <div class="card-feature">
             <img src="./assets/image/pipe.png" alt="">

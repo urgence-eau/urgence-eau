@@ -4,6 +4,9 @@ body {
     font-family: 'Montserrat Alternates', sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url("../image/Ellipse_16.svg");
+    background-repeat: no-repeat;
+    background-position: left 28%;
 }
 
 button{
@@ -18,10 +21,6 @@ button{
     cursor: pointer;
 }
 
-button#btn-title{
-    margin-top: 5vh;
-}
-
 img{
     height: 75px;
     margin-bottom: 10px;
@@ -29,19 +28,19 @@ img{
 
 h1.title{
     font-size: 64px;
-    color: #FFFFFF;
-    text-align: center;
+    color: #000000;
     margin-bottom: 10px;
+    font-weight: bold;
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
 h2{
     margin: 0;
     text-align: center;
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 27px;
-    font-weight: 700;
-    color: #4A4A4A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px !important;
+    font-weight: bold !important;
+    color: #000000;
 }
 
 h3.title-under{
@@ -51,6 +50,11 @@ h3.title-under{
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 20px;
+}
+
+#btn-title{
+    margin-top: 20px;
+    margin-left: 250px;
 }
 
 p.description-obj{
@@ -81,20 +85,25 @@ input[type="text"]{
 
 .header-element{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
     height: 65vh;
-    background-image: url("../image/jeremy-bishop-1braZySlEKA-unsplash.jpg");
+    padding: 75px 75px 10px 75px ;
+    background-image: url("../image/Ellipse_18.svg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: top right, bottom left;
+}
+
+.header-container{
+    width: 100%;
+    background-image: url("../image/illustration_homepage 1.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .description{
     max-width: 500px;
-    text-align: center;
     font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    color: #FFFFFF;
+    font-family: 'Cabin', sans-serif;
+    color: #000000;
     font-weight: 300;
 }
 
@@ -152,8 +161,8 @@ input[type="text"]{
 
 .info{
     margin-top: 10px;
-    font-family: 'Roboto', sans-serif;
-    color: #9B9B9B;
+    font-family: 'Cabin', sans-serif;
+    color: #000000;
     font-weight: 700;
     font-size: 18px;
     max-width: 220px;
@@ -314,9 +323,25 @@ table
     transition: background-color 1s ease;
 }
 
+.modal-content h3.biggerTitle{
+    font-size: 35px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
 .modal-content form{
     width: 75%;
 }
+
+.inscription{
+    font-family: 'Cabin', sans-serif;
+    margin-bottom: 10px;
+}
+
+.inscription a{
+    color: #4945FF;
+    font-family: 'Cabin', sans-serif;
+}
+
 .centered{
     align-items: center;
 }
