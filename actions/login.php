@@ -18,5 +18,6 @@ if($r->rowCount() > 0){
     $user = $r->fetch();
     session_start();
     $_SESSION["id"] = $user["id"];
+    $_SESSION["role"] = $user["role"];
 }
 header("Location: ../");
