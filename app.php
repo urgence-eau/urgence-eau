@@ -268,7 +268,9 @@ $currentUser = Config::getUser($_SESSION["id"]);
                     fillColor: chooseColor(parseInt(pourcentageIncident[i])),
                     fillOpacity: 0.5,
                     radius: parseInt(nbIncidentRadius[i])*5000})
-        .bindPopup(`Nombre d'incident : ${nbIncidentRadius[i]}`)
+        .bindPopup(`
+                    <p style="font-family: 'Cabin', sans-serif;">Nombre d'incident : ${nbIncidentRadius[i]}</p>
+                    <p style="font-family: 'Cabin', sans-serif;">Proportions d'incident traîtés: ${pourcentageIncident[i]}%</p> `)
         .addTo(map)
     );
     choose_display();
