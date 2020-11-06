@@ -4,7 +4,7 @@ require_once './Config.php';
 include_once "header.php";
 ?>
 <div>
-    <h1>
+    <h1 id="titleCenter">
         Gestion des fuites
     </h1>
 </div>

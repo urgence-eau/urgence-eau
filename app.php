@@ -49,7 +49,7 @@ if(isset($_SESSION["id"])){
             </button>
         </form>
         <?php if ($_SESSION["role"]==1): ?>
-            <a href="backoffice.php"> Accès backoffice</a>
+            <a id="btn-map" href="backoffice.php"> Accès backoffice</a>
         <?php endif; ?>
         <button id="btn-incident" data-toggle="modal" data-target=".bd-example-modal-lg">
             Signaler une fuite

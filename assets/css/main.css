@@ -41,6 +41,8 @@ a#btn-map{
     margin-left: 225px;
 }
 
+
+
 img{
     height: 75px;
     margin-bottom: 10px;
@@ -52,6 +54,11 @@ h1.title{
     margin-bottom: 10px;
     font-weight: bold;
     font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#titleCenter{
+    text-align: center;
+    margin-top: 10px;
 }
 
 h2{
@@ -278,6 +285,17 @@ i{
     background-color: #FFFFFF;
     border-radius: 10px;
     justify-content: space-between;
+}
+
+.incident-list{
+    margin-top: 30px;
+    background-color: #FFFFFF;
+}
+
+.controller-container #btn-map{
+    margin-top: 0;
+    font-size: 18px;
+    font-family: 'Cabin', sans-serif;
 }
 
 h5{
